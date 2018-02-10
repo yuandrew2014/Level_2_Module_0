@@ -10,27 +10,18 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class GuestBook implements ActionListener {
+	int l = 0;
 	public static void main(String[] args) {
 		GuestBook gb = new GuestBook();
 		gb.a();
 		
 	}
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		ArrayList<String> names = new ArrayList<String>();
-		if(e.getSource() == b1) {
-			String andrew = JOptionPane.showInputDialog("enter a name");
-			names.add(andrew);	
-			
-		}if(e.getSource() == b1) {
-			
-		}
-		
-	}
+	
+	
 	// Create a GUI with two buttons. One button reads "Add Name" and the other button reads "View Names". 
 	
 	JButton b1 = new JButton();
+	JButton  b2 = new JButton();
 	void a() {
 		
 	JFrame f1 = new JFrame();
@@ -38,10 +29,10 @@ public class GuestBook implements ActionListener {
 	
 	JPanel p1 = new JPanel();
 	p1.setVisible(true);
-	JButton b1 = new JButton();
+	
 	b1.setVisible(true);
 	b1.setText("add name");
-	JButton  b2 = new JButton();
+	
 	b2.setVisible(true);
 	b2.setText("view names");
 	f1.add(p1);
@@ -51,8 +42,30 @@ public class GuestBook implements ActionListener {
 	b2.addActionListener(this);
 	f1.pack();
 	}
-	// When the add name button is clicked, display an input dialog that asks the user to enter a name. Add
 
+	// When the add name button is clicked, display an input dialog that asks the user to enter a name. Add
+	ArrayList<String> names = new ArrayList<String>();
+	@Override
+	
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+		if(e.getSource() == b1) {
+			System.out.println("pressed");
+			String andrew = JOptionPane.showInputDialog("enter a name");
+			names.add(andrew);	
+			
+			
+		} else if(e.getSource() == b2) {
+			String s = "";
+			for (int i = 0; i < names.size(); i++) {
+				
+			
+			s += "Guest #" + (i+1) + ":" + names.get(i) + "\n";
+			}
+			JOptionPane.showMessageDialog(null, s);
+		}
+		
 	//@Override
 	
 	
@@ -75,3 +88,4 @@ public class GuestBook implements ActionListener {
 	
 	// Guest #4: Donny Doners
 }
+	}
